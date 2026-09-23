@@ -1,3 +1,4 @@
+from urllib import response
 from langchain.agents import create_agent
 from dotenv import load_dotenv
 load_dotenv()
@@ -23,7 +24,8 @@ agent = create_agent(
 
 
 def get_response(prompt: str) -> str:
-    return agent.invoke({"messages": [prompt]})
+    response = agent.invoke({"messages": [prompt]})
+    return response["messages"][-1].text
 
 
 def main():
