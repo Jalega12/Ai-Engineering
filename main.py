@@ -1,4 +1,6 @@
 from langchain.agents import create_agent
+from dotenv import load_dotenv
+load_dotenv()
 
 
 SYSTEM_PROMPT = """
@@ -14,37 +16,25 @@ They vary on whether they are in stock or not, but we have them eventually.
 All you could ever hope for.
 """
 
-def get_it(item: str, color: str) -> str:
-    fake_stock = {
-        ("hoodie", "blue"): 4,
-        ("hoodie", "black"): 12,
-        ("t-shirt", "blue"): 30,
-    }
-
-    if (item.lower(), color.lower()) in fake_stock:
-        return "We're in stock!"
-    else:
-        return "We're out of stock..."
-    
-
-
 agent = create_agent(
     model="google_genai:gemini-flash-lite-latest",
-    tools=["get_it"]
     system_prompt=SYSTEM_PROMPT
 )
 
 
-def get_it(item: str, color: str) -> str:
-    fake_stock = {
-        ("hoodie", "blue"): 4,
-        ("hoodie", "black"): 12,
-        ("t-shirt", "blue"): 30,
-    }
+def get_response(prompt: str) -> str:
+    return agent.invoke({"messages": [prompt]})
 
-    if (item.lower(), color.lower()) in fake_stock:
-        return "We're in stock!"
-    else:
-        return "We're out of stock..."
-    
-print("hi")
+
+def main():
+    while True:
+        try:
+            prompt = input("Input: ")
+            if prompt == "exit": break
+            response = get_response(prompt)
+        except EOFError:
+            break
+        print(response)
+
+if __name__ == "__main__":
+    main()
