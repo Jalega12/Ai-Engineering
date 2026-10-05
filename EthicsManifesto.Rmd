@@ -1,0 +1,11 @@
+---
+title: "Ethics Manifesto"
+output: html_document
+date: "2026-09-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Use ai good or u r bad. >:(
