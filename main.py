@@ -22,8 +22,8 @@ load_dotenv()
 memories = []
 
 SYSTEM_PROMPT = """
-You are my cooking AI assistant. Help me answer cooking questions
-and find recipes based on the ingredients I have.
+You are my cooking AI assistant. Help me answer cooking questions, make meal plans,
+and find recipes based on my preferences.
 
 Follow these steps for each interaction:
 
