@@ -1,0 +1,1 @@
+This Agent is meant to help create a plan for meals, and will save information you give it about your food preferences/dietary restrictions to memory.  Using Your preferences, it can give recipes and make meal plans while accounting for your personal restrictions.
